@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmileCraft Dental | Expert Dental Care in Bengaluru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0B6E7A;
+      --teal-light: #12939F;
+      --teal-pale: #E6F5F7;
+      --gold: #C9952A;
+      --gold-light: #F0C96A;
+      --dark: #0F1C1E;
+      --mid: #3A5558;
+      --soft: #7A9EA3;
+      --bg: #F7FBFC;
+      --white: #FFFFFF;
+      --border: #D4EAED;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(247,251,252,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(11,110,122,0.10); }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.55rem; color: var(--teal);
+      display: flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--mid);
+      font-size: 0.93rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: var(--white);
+      padding: 0.65rem 1.6rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--teal-light); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 5% 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; right: -100px; top: -100px;
+      width: 650px; height: 650px;
+      background: radial-gradient(circle, rgba(18,147,159,0.12) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--teal-pale); color: var(--teal);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.6rem; color: var(--gold); }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 1.1; color: var(--dark);
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    h1 em { color: var(--teal); font-style: italic; }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--mid);
+      line-height: 1.7; max-width: 480px;
+      margin-bottom: 2.4rem;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--teal); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(11,110,122,0.25);
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(11,110,122,0.3); }
+    .btn-secondary {
+      background: transparent; color: var(--teal);
+      padding: 0.9rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 2px solid var(--teal);
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: var(--teal-pale); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; color: var(--teal);
+    }
+    .stat-label { font-size: 0.82rem; color: var(--soft); font-weight: 500; }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative; z-index: 2;
+      animation: fadeIn 1s 0.3s ease both;
+    }
+    .hero-card-main {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(11,110,122,0.12);
+      max-width: 360px; width: 100%;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .hero-icon-ring {
+      width: 90px; height: 90px;
+      background: var(--teal-pale);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.5rem;
+    }
+    .hero-card-main h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; text-align: center; margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    .hero-card-main p { text-align: center; color: var(--soft); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .mini-services { display: flex; flex-direction: column; gap: 0.7rem; }
+    .mini-service {
+      display: flex; align-items: center; gap: 0.8rem;
+      background: var(--bg); padding: 0.7rem 1rem; border-radius: 12px;
+    }
+    .mini-service-icon { font-size: 1.1rem; }
+    .mini-service span { font-size: 0.88rem; font-weight: 500; color: var(--mid); }
+    .floating-badge {
+      position: absolute;
+      background: var(--white); border-radius: 14px; padding: 0.7rem 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.82rem; font-weight: 600;
+    }
+    .fb-top { top: -20px; right: -30px; color: var(--gold); border: 1px solid var(--gold-light); }
+    .fb-bottom { bottom: -18px; left: -30px; color: var(--teal); border: 1px solid var(--border); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--dark); color: var(--white);
+      padding: 1.2rem 5%; display: flex;
+      align-items: center; justify-content: center;
+      gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; font-weight: 500; opacity: 0.85; }
+    .trust-item span { font-size: 1.1rem; }
+
+    /* SECTION SHARED */
+    section { padding: 5rem 5%; }
+    .section-label {
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--dark); line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--mid); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--bg); border-radius: 20px;
+      padding: 2rem; border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative; overflow: hidden;
+      text-decoration: none; color: inherit;
+      display: block;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--teal); transform: scaleX(0); transition: transform 0.25s;
+      transform-origin: left;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(11,110,122,0.12); border-color: var(--teal); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.88rem; color: var(--soft); line-height: 1.6; margin-bottom: 1rem; }
+    .service-link { font-size: 0.85rem; color: var(--teal); font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
+
+    /* WHY US */
+    .why-us { background: var(--teal); color: var(--white); }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .why-text .section-label { color: var(--gold-light); }
+    .why-text .section-title { color: var(--white); }
+    .why-text .section-sub { color: rgba(255,255,255,0.75); }
+    .why-points { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.3rem; }
+    .why-point { display: flex; gap: 1rem; }
+    .why-point-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: rgba(255,255,255,0.15); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .why-point-text h4 { font-weight: 600; margin-bottom: 0.3rem; }
+    .why-point-text p { font-size: 0.88rem; opacity: 0.75; line-height: 1.6; }
+    .why-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+    .why-stat-card {
+      background: rgba(255,255,255,0.12); border-radius: 16px;
+      padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+    }
+    .wsc-num { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--gold-light); }
+    .wsc-label { font-size: 0.88rem; opacity: 0.8; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--bg); }
+    .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .tcard {
+      background: var(--white); border-radius: 20px;
+      padding: 2rem; border: 1px solid var(--border);
+    }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+    .tcard blockquote { font-size: 0.93rem; color: var(--mid); line-height: 1.7; font-style: italic; margin-bottom: 1.5rem; }
+    .tcard-author { display: flex; align-items: center; gap: 0.8rem; }
+    .tcard-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: var(--white);
+    }
+    .av-teal { background: var(--teal); }
+    .av-gold { background: var(--gold); }
+    .av-mid { background: var(--mid); }
+    .tcard-name { font-weight: 600; font-size: 0.9rem; }
+    .tcard-role { font-size: 0.78rem; color: var(--soft); }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--dark); padding: 5rem 5%;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-band p { color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; font-size: 1rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white); color: var(--dark);
+      padding: 0.9rem 2.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+    .btn-outline-white {
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline-white:hover { border-color: var(--white); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #0A1618; color: rgba(255,255,255,0.7);
+      padding: 3.5rem 5% 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
+    footer h4 { color: var(--white); font-weight: 600; margin-bottom: 1.2rem; font-size: 0.93rem; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    footer ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    footer ul a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2rem; display: flex;
+      justify-content: space-between; align-items: center;
+      font-size: 0.82rem;
+    }
+
+    /* STICKY MOBILE CTA */
+    .sticky-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: var(--teal); color: var(--white);
+      padding: 1rem 1.5rem; text-align: center;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 -4px 20px rgba(11,110,122,0.3);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 7rem; text-align: center; }
+      .hero-sub { margin: 0 auto 2.4rem; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { margin-top: 3rem; }
+      .fb-top, .fb-bottom { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .sticky-cta { display: block; }
+      body { padding-bottom: 60px; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Smile<span>Craft</span> Dental</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Book Appointment</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book Free Consultation</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Trusted by 2,000+ Patients in Bengaluru</div>
+    <h1>Your Healthiest<br><em>Smile</em> Starts<br>Right Here</h1>
+    <p class="hero-sub">Expert dental care with gentle hands, modern technology, and zero judgment. From routine cleanings to complete smile transformations — we make every visit comfortable.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">📅 Book Appointment</a>
+      <a href="services.html" class="btn-secondary">Explore Services →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">2K+</div>
+        <div class="stat-label">Happy Patients</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="floating-badge fb-top">⭐ 4.9 / 5 Rating</div>
+      <div class="hero-icon-ring">🦷</div>
+      <h3>SmileCraft Dental Clinic</h3>
+      <p>Complete dental care under one roof</p>
+      <div class="mini-services">
+        <div class="mini-service"><span class="mini-service-icon">✨</span><span>Teeth Whitening & Cosmetics</span></div>
+        <div class="mini-service"><span class="mini-service-icon">🔬</span><span>Digital X-Ray Diagnosis</span></div>
+        <div class="mini-service"><span class="mini-service-icon">🛡️</span><span>Painless Root Canal</span></div>
+        <div class="mini-service"><span class="mini-service-icon">👑</span><span>Dental Implants & Crowns</span></div>
+      </div>
+      <div class="floating-badge fb-bottom">📍 Indiranagar, Bengaluru</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✅</span> BDS & MDS Certified Doctors</div>
+  <div class="trust-item"><span>🏥</span> NABH-Compliant Clinic</div>
+  <div class="trust-item"><span>💳</span> EMI Available</div>
+  <div class="trust-item"><span>📞</span> Same-Day Emergency Slots</div>
+  <div class="trust-item"><span>🦠</span> ISO-Sterilized Equipment</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-header">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Comprehensive Dental Services</h2>
+    <p class="section-sub">From your first check-up to your dream smile — we've got every treatment covered with the latest techniques.</p>
+  </div>
+  <div class="services-grid">
+    <a href="services.html#general" class="service-card">
+      <div class="service-icon">🧹</div>
+      <h3>General Dentistry</h3>
+      <p>Routine check-ups, professional cleaning, fillings, and preventive care to keep your teeth healthy for life.</p>
+      <div class="service-link">Learn more →</div>
+    </a>
+    <a href="services.html#cosmetic" class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Cosmetic Dentistry</h3>
+      <p>Teeth whitening, veneers, bonding, and smile makeovers tailored to give you the confidence you deserve.</p>
+      <div class="service-link">Learn more →</div>
+    </a>
+    <a href="services.html#orthodontics" class="service-card">
+      <div class="service-icon">🦷</div>
+      <h3>Orthodontics</h3>
+      <p>Braces and clear aligners for adults and children. Straighten your teeth comfortably and discreetly.</p>
+      <div class="service-link">Learn more →</div>
+    </a>
+    <a href="services.html#implants" class="service-card">
+      <div class="service-icon">👑</div>
+      <h3>Dental Implants</h3>
+      <p>Permanent, natural-looking tooth replacements using premium titanium implants. Eat, speak, and smile freely.</p>
+      <div class="service-link">Learn more →</div>
+    </a>
+    <a href="services.html#rootcanal" class="service-card">
+      <div class="service-icon">💉</div>
+      <h3>Root Canal Treatment</h3>
+      <p>Painless, modern RCT techniques that save your natural teeth and eliminate infection fast.</p>
+      <div class="service-link">Learn more →</div>
+    </a>
+    <a href="services.html#pediatric" class="service-card">
+      <div class="service-icon">🧒</div>
+      <h3>Pediatric Dentistry</h3>
+      <p>Gentle, fun-first dental care for children. We make their first visit something to look forward to.</p>
+      <div class="service-link">Learn more →</div>
+    </a>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <div class="why-inner">
+    <div class="why-text">
+      <div class="section-label">Why SmileCraft?</div>
+      <h2 class="section-title">Dental Care That Puts You First</h2>
+      <p class="section-sub">We're not just treating teeth — we're building lasting relationships built on trust, comfort, and real results.</p>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-point-icon">🩺</div>
+          <div class="why-point-text">
+            <h4>Expert Dental Team</h4>
+            <p>Our doctors hold BDS and MDS degrees with specialisations in cosmetic, implant, and pediatric dentistry.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">🔬</div>
+          <div class="why-point-text">
+            <h4>Advanced Technology</h4>
+            <p>Digital X-rays, CEREC same-day crowns, and laser dentistry for faster, more precise treatment.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">😌</div>
+          <div class="why-point-text">
+            <h4>Anxiety-Free Environment</h4>
+            <p>We offer sedation options and a calm, welcoming space designed to ease dental anxiety.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-cards">
+      <div class="why-stat-card">
+        <div class="wsc-num">2,000+</div>
+        <div class="wsc-label">Smiles transformed since 2012</div>
+      </div>
+      <div class="why-stat-card">
+        <div class="wsc-num">98%</div>
+        <div class="wsc-label">Patients would recommend us to family</div>
+      </div>
+      <div class="why-stat-card">
+        <div class="wsc-num">4.9★</div>
+        <div class="wsc-label">Average Google review score</div>
+      </div>
+      <div class="why-stat-card">
+        <div class="wsc-num">Same Day</div>
+        <div class="wsc-label">Emergency appointments available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-label">Patient Stories</div>
+    <h2 class="section-title">What Our Patients Say</h2>
+    <p class="section-sub">Real words from real people who trusted us with their smiles.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I was terrified of dentists my whole life. The team here completely changed that. My root canal was painless and the staff made me feel so comfortable. I actually look forward to check-ups now!"</blockquote>
+      <div class="tcard-author">
+        <div class="tcard-avatar av-teal">P</div>
+        <div>
+          <div class="tcard-name">Priya Mehta</div>
+          <div class="tcard-role">Software Engineer, Whitefield</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Got dental implants here after years of hesitation. The results are stunning — they look and feel just like natural teeth. Dr. Kumar is brilliant and the whole process was smooth and transparent."</blockquote>
+      <div class="tcard-author">
+        <div class="tcard-avatar av-gold">R</div>
+        <div>
+          <div class="tcard-name">Rahul Nair</div>
+          <div class="tcard-role">Business Owner, Koramangala</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Brought my 6-year-old for her first dental visit and she absolutely loved it! The clinic is so child-friendly and the staff is incredibly patient. She's already asking when we can come back."</blockquote>
+      <div class="tcard-author">
+        <div class="tcard-avatar av-mid">S</div>
+        <div>
+          <div class="tcard-name">Sunita Reddy</div>
+          <div class="tcard-role">Teacher, HSR Layout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Ready for a Smile You'll Love?</h2>
+  <p>Book your free consultation today. No pressure, no hidden fees — just honest dental care.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-white">📅 Book Free Consultation</a>
+    <a href="tel:+918012345678" class="btn-outline-white">📞 Call +91 80 1234 5678</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="text-decoration:none">Smile<span style="color:var(--gold)">Craft</span> Dental</a>
+      <p>Expert dental care in the heart of Bengaluru. Serving families since 2012 with honesty, technology, and a gentle touch.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#general">General Dentistry</a></li>
+        <li><a href="services.html#cosmetic">Cosmetic Dentistry</a></li>
+        <li><a href="services.html#orthodontics">Orthodontics</a></li>
+        <li><a href="services.html#implants">Dental Implants</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Clinic</h4>
+      <ul>
+        <li><a href="index.html">About Us</a></li>
+        <li><a href="contact.html">Book Appointment</a></li>
+        <li><a href="#">Patient FAQ</a></li>
+        <li><a href="#">Insurance & EMI</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+918012345678">+91 80 1234 5678</a></li>
+        <li><a href="mailto:hello@smilecraftdental.in">hello@smilecraftdental.in</a></li>
+        <li><a href="#">42, 12th Main, Indiranagar, Bengaluru 560038</a></li>
+        <li><a href="#">Mon–Sat: 9 AM – 8 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SmileCraft Dental. All rights reserved.</span>
+    <span>Designed for Future Interns UI/UX Internship 2026</span>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<a href="contact.html" class="sticky-cta">📅 Book Free Consultation</a>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+</script>
+</body>
+</html>
