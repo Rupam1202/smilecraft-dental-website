@@ -1,69 +1,112 @@
-# FUTURE_UIUX_01 — SmileCraft Dental Website Redesign
 
-**Future Interns UI/UX Internship 2026 | Task 1**  
-**Intern:** Rupam Talukdar | CIN: FIT/APR26/UX2202
+# SmileCraft — Dental Clinic Website
 
----
+A responsive dental clinic website redesign focused on usability, clear service information, and appointment enquiries.
 
-## 📋 Project Overview
+## 📌 Project Overview
 
-A complete UI/UX redesign of a local dental clinic website focused on **lead generation and conversion optimisation**. The project covers all 3 required deliverable pages plus a full design rationale document.
+SmileCraft is a website redesign project completed as part of the Future Interns UI/UX Internship in 2026. The goal was to improve the presentation of dental services and create a clearer path for visitors who want to learn about treatments or contact the clinic.
 
-## 🗂 File Structure
+The project includes three pages: a homepage, a services page, and a contact/appointment page.
 
+## ✨ Key Features
+
+- Responsive homepage layout
+- Dental services information and treatment details
+- Contact and appointment enquiry interface
+- Consistent typography, colours, and visual hierarchy
+- Desktop and mobile page designs
+- Clear navigation and calls to action
+
+## 🖼️ Screenshots
+
+### Homepage
+
+**Desktop**
+
+![SmileCraft homepage desktop](homepage-desktop.png)
+
+**Mobile**
+
+![SmileCraft homepage mobile](homepage-mobile.png)
+
+### Services Page
+
+**Desktop**
+
+![SmileCraft services desktop](services-desktop.png)
+
+**Mobile**
+
+![SmileCraft services mobile](services-mobile.png)
+
+### Contact and Appointment Page
+
+**Desktop**
+
+![SmileCraft contact desktop](contact-desktop.png)
+
+**Mobile**
+
+![SmileCraft contact mobile](contact-mobile.png)
+
+## 🛠️ Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+
+## 📂 Project Structure
+
+```text
+.
+├── index.html
+├── services.html
+├── contact.html
+├── homepage-desktop.png
+├── homepage-mobile.png
+├── services-desktop.png
+├── services-mobile.png
+├── contact-desktop.png
+├── contact-mobile.png
+├── DESIGN_RATIONALE.md
+└── README.md
 ```
-FUTURE_UIUX_01/
-├── index.html          → Homepage
-├── services.html       → Services Detail Page  
-├── contact.html        → Contact / Appointment Booking Page
-├── DESIGN_RATIONALE.md → Full UX design rationale document
-└── README.md           → This file
-```
 
-## 📄 Pages Delivered
+## 🚀 Getting Started
 
-| Page | File | Description |
-|------|------|-------------|
-| Homepage | `index.html` | Hero, trust bar, services grid, why us, testimonials, CTA |
-| Services | `services.html` | 6 services with alternating layout, process cards, pricing |
-| Contact | `contact.html` | Appointment booking form, time slots, FAQ, clinic info |
+1. Clone or download this repository.
+2. Open the project folder on your computer.
+3. Open `index.html` in your browser.
+4. Navigate through the homepage, services, and contact pages.
 
-## ✨ Key UX Features
+No build step is required for a basic static HTML project.
 
-- ✅ Conversion-optimised hero with trust stats
-- ✅ Transparent pricing on all services
-- ✅ Interactive time slot picker on booking form
-- ✅ Mobile-responsive with sticky CTA
-- ✅ Step-by-step process cards (reduces dental anxiety)
-- ✅ Emergency call CTA on mobile
-- ✅ FAQ accordion to handle pre-booking objections
-- ✅ Form success state without page reload
+## 🎨 Design Rationale
 
-## 🎨 Design System
+The design focuses on:
 
-| Token | Value |
-|-------|-------|
-| Primary | `#0B6E7A` (Deep Teal) |
-| Accent | `#C9952A` (Gold) |
-| Background | `#F7FBFC` |
-| Heading Font | DM Serif Display |
-| Body Font | DM Sans |
+- Clear navigation and content hierarchy
+- Consistent typography and colour usage
+- Responsive desktop and mobile layouts
+- Accessible, readable interface elements
+- Clear calls to action for contacting the clinic
 
-## 🛠 Tools Used
+For the full design rationale, see [DESIGN_RATIONALE.md](DESIGN_RATIONALE.md).
 
-- HTML5, CSS3 (CSS Variables, Grid, Flexbox, Clamp)
-- Vanilla JavaScript (no frameworks)
-- Google Fonts
+## 🎓 Project Context
 
-## 📖 Design Rationale
+**Program:** Future Interns UI/UX Internship  
+**Task:** Website redesign  
+**Year:** 2026
 
-See [`DESIGN_RATIONALE.md`](./DESIGN_RATIONALE.md) for full documentation of:
-- Target audience & user intent
-- Layout structure & visual hierarchy
-- UX decisions & conversion strategy
-- Accessibility considerations
-- Before/after conversion analysis
+This project was completed as part of an internship learning experience.
 
----
+## 🔮 Possible Future Improvements
 
-*Future Interns UI/UX Design Internship 2026*
+- Add form validation and meaningful submission feedback
+- Connect appointment enquiries to a backend service
+- Improve accessibility and keyboard navigation
+- Test across different screen sizes and browsers
+
+These are potential improvements, not claims that the features are already implemented.
